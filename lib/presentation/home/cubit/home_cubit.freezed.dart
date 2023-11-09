@@ -17,14 +17,11 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$HomeBuildableState {
   bool get loading => throw _privateConstructorUsedError;
-  bool get isModal_hud => throw _privateConstructorUsedError;
   bool get success => throw _privateConstructorUsedError;
   bool get failed => throw _privateConstructorUsedError;
   dynamic get error => throw _privateConstructorUsedError;
-  bool get isSuccess => throw _privateConstructorUsedError;
-  bool get isUser => throw _privateConstructorUsedError;
-  int get currentIndex => throw _privateConstructorUsedError;
-  List<dynamic> get data => throw _privateConstructorUsedError;
+  List<Character>? get characters => throw _privateConstructorUsedError;
+  int? get nextPageKey => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $HomeBuildableStateCopyWith<HomeBuildableState> get copyWith =>
@@ -39,14 +36,11 @@ abstract class $HomeBuildableStateCopyWith<$Res> {
   @useResult
   $Res call(
       {bool loading,
-      bool isModal_hud,
       bool success,
       bool failed,
       dynamic error,
-      bool isSuccess,
-      bool isUser,
-      int currentIndex,
-      List<dynamic> data});
+      List<Character>? characters,
+      int? nextPageKey});
 }
 
 /// @nodoc
@@ -63,23 +57,16 @@ class _$HomeBuildableStateCopyWithImpl<$Res, $Val extends HomeBuildableState>
   @override
   $Res call({
     Object? loading = null,
-    Object? isModal_hud = null,
     Object? success = null,
     Object? failed = null,
     Object? error = freezed,
-    Object? isSuccess = null,
-    Object? isUser = null,
-    Object? currentIndex = null,
-    Object? data = null,
+    Object? characters = freezed,
+    Object? nextPageKey = freezed,
   }) {
     return _then(_value.copyWith(
       loading: null == loading
           ? _value.loading
           : loading // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isModal_hud: null == isModal_hud
-          ? _value.isModal_hud
-          : isModal_hud // ignore: cast_nullable_to_non_nullable
               as bool,
       success: null == success
           ? _value.success
@@ -93,22 +80,14 @@ class _$HomeBuildableStateCopyWithImpl<$Res, $Val extends HomeBuildableState>
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as dynamic,
-      isSuccess: null == isSuccess
-          ? _value.isSuccess
-          : isSuccess // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isUser: null == isUser
-          ? _value.isUser
-          : isUser // ignore: cast_nullable_to_non_nullable
-              as bool,
-      currentIndex: null == currentIndex
-          ? _value.currentIndex
-          : currentIndex // ignore: cast_nullable_to_non_nullable
-              as int,
-      data: null == data
-          ? _value.data
-          : data // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
+      characters: freezed == characters
+          ? _value.characters
+          : characters // ignore: cast_nullable_to_non_nullable
+              as List<Character>?,
+      nextPageKey: freezed == nextPageKey
+          ? _value.nextPageKey
+          : nextPageKey // ignore: cast_nullable_to_non_nullable
+              as int?,
     ) as $Val);
   }
 }
@@ -123,14 +102,11 @@ abstract class _$$HomeBuildableStateImplCopyWith<$Res>
   @useResult
   $Res call(
       {bool loading,
-      bool isModal_hud,
       bool success,
       bool failed,
       dynamic error,
-      bool isSuccess,
-      bool isUser,
-      int currentIndex,
-      List<dynamic> data});
+      List<Character>? characters,
+      int? nextPageKey});
 }
 
 /// @nodoc
@@ -145,23 +121,16 @@ class __$$HomeBuildableStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? loading = null,
-    Object? isModal_hud = null,
     Object? success = null,
     Object? failed = null,
     Object? error = freezed,
-    Object? isSuccess = null,
-    Object? isUser = null,
-    Object? currentIndex = null,
-    Object? data = null,
+    Object? characters = freezed,
+    Object? nextPageKey = freezed,
   }) {
     return _then(_$HomeBuildableStateImpl(
       loading: null == loading
           ? _value.loading
           : loading // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isModal_hud: null == isModal_hud
-          ? _value.isModal_hud
-          : isModal_hud // ignore: cast_nullable_to_non_nullable
               as bool,
       success: null == success
           ? _value.success
@@ -175,22 +144,14 @@ class __$$HomeBuildableStateImplCopyWithImpl<$Res>
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as dynamic,
-      isSuccess: null == isSuccess
-          ? _value.isSuccess
-          : isSuccess // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isUser: null == isUser
-          ? _value.isUser
-          : isUser // ignore: cast_nullable_to_non_nullable
-              as bool,
-      currentIndex: null == currentIndex
-          ? _value.currentIndex
-          : currentIndex // ignore: cast_nullable_to_non_nullable
-              as int,
-      data: null == data
-          ? _value._data
-          : data // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
+      characters: freezed == characters
+          ? _value._characters
+          : characters // ignore: cast_nullable_to_non_nullable
+              as List<Character>?,
+      nextPageKey: freezed == nextPageKey
+          ? _value.nextPageKey
+          : nextPageKey // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -200,22 +161,16 @@ class __$$HomeBuildableStateImplCopyWithImpl<$Res>
 class _$HomeBuildableStateImpl implements _HomeBuildableState {
   const _$HomeBuildableStateImpl(
       {this.loading = false,
-      this.isModal_hud = false,
       this.success = false,
       this.failed = false,
       this.error,
-      this.isSuccess = false,
-      this.isUser = false,
-      this.currentIndex = 0,
-      final List<dynamic> data = const []})
-      : _data = data;
+      final List<Character>? characters,
+      this.nextPageKey})
+      : _characters = characters;
 
   @override
   @JsonKey()
   final bool loading;
-  @override
-  @JsonKey()
-  final bool isModal_hud;
   @override
   @JsonKey()
   final bool success;
@@ -224,27 +179,22 @@ class _$HomeBuildableStateImpl implements _HomeBuildableState {
   final bool failed;
   @override
   final dynamic error;
+  final List<Character>? _characters;
   @override
-  @JsonKey()
-  final bool isSuccess;
-  @override
-  @JsonKey()
-  final bool isUser;
-  @override
-  @JsonKey()
-  final int currentIndex;
-  final List<dynamic> _data;
-  @override
-  @JsonKey()
-  List<dynamic> get data {
-    if (_data is EqualUnmodifiableListView) return _data;
+  List<Character>? get characters {
+    final value = _characters;
+    if (value == null) return null;
+    if (_characters is EqualUnmodifiableListView) return _characters;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_data);
+    return EqualUnmodifiableListView(value);
   }
 
   @override
+  final int? nextPageKey;
+
+  @override
   String toString() {
-    return 'HomeBuildableState(loading: $loading, isModal_hud: $isModal_hud, success: $success, failed: $failed, error: $error, isSuccess: $isSuccess, isUser: $isUser, currentIndex: $currentIndex, data: $data)';
+    return 'HomeBuildableState(loading: $loading, success: $success, failed: $failed, error: $error, characters: $characters, nextPageKey: $nextPageKey)';
   }
 
   @override
@@ -253,31 +203,24 @@ class _$HomeBuildableStateImpl implements _HomeBuildableState {
         (other.runtimeType == runtimeType &&
             other is _$HomeBuildableStateImpl &&
             (identical(other.loading, loading) || other.loading == loading) &&
-            (identical(other.isModal_hud, isModal_hud) ||
-                other.isModal_hud == isModal_hud) &&
             (identical(other.success, success) || other.success == success) &&
             (identical(other.failed, failed) || other.failed == failed) &&
             const DeepCollectionEquality().equals(other.error, error) &&
-            (identical(other.isSuccess, isSuccess) ||
-                other.isSuccess == isSuccess) &&
-            (identical(other.isUser, isUser) || other.isUser == isUser) &&
-            (identical(other.currentIndex, currentIndex) ||
-                other.currentIndex == currentIndex) &&
-            const DeepCollectionEquality().equals(other._data, _data));
+            const DeepCollectionEquality()
+                .equals(other._characters, _characters) &&
+            (identical(other.nextPageKey, nextPageKey) ||
+                other.nextPageKey == nextPageKey));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       loading,
-      isModal_hud,
       success,
       failed,
       const DeepCollectionEquality().hash(error),
-      isSuccess,
-      isUser,
-      currentIndex,
-      const DeepCollectionEquality().hash(_data));
+      const DeepCollectionEquality().hash(_characters),
+      nextPageKey);
 
   @JsonKey(ignore: true)
   @override
@@ -290,19 +233,14 @@ class _$HomeBuildableStateImpl implements _HomeBuildableState {
 abstract class _HomeBuildableState implements HomeBuildableState {
   const factory _HomeBuildableState(
       {final bool loading,
-      final bool isModal_hud,
       final bool success,
       final bool failed,
       final dynamic error,
-      final bool isSuccess,
-      final bool isUser,
-      final int currentIndex,
-      final List<dynamic> data}) = _$HomeBuildableStateImpl;
+      final List<Character>? characters,
+      final int? nextPageKey}) = _$HomeBuildableStateImpl;
 
   @override
   bool get loading;
-  @override
-  bool get isModal_hud;
   @override
   bool get success;
   @override
@@ -310,13 +248,9 @@ abstract class _HomeBuildableState implements HomeBuildableState {
   @override
   dynamic get error;
   @override
-  bool get isSuccess;
+  List<Character>? get characters;
   @override
-  bool get isUser;
-  @override
-  int get currentIndex;
-  @override
-  List<dynamic> get data;
+  int? get nextPageKey;
   @override
   @JsonKey(ignore: true)
   _$$HomeBuildableStateImplCopyWith<_$HomeBuildableStateImpl> get copyWith =>

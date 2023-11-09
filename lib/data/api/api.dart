@@ -11,8 +11,8 @@ class Api {
 
   // Api(this._token);
 
-  final _host = "api.takhfid.uz";
-  final _root = "";
+  final _host = "rickandmortyapi.com";
+  final _root = "api";
 
   final _timeout = const Duration(seconds: 15);
 

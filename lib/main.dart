@@ -7,7 +7,7 @@ import 'package:task_ventio/utils/router/router.dart';
 import 'package:task_ventio/utils/theme/main_theme.dart';
 
 void main() async {
-  init();
+ await init();
   runApp(
     MultiBlocProvider(
       providers: [

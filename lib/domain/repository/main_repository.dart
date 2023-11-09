@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:injectable/injectable.dart';
 import 'package:task_ventio/data/api/main_api.dart';
-
+import 'package:task_ventio/domain/model/character/character_model.dart';
 
 @Injectable()
 class MainRepository {
@@ -16,7 +16,12 @@ class MainRepository {
     return list;
   }
 
- 
+  fetchCharacters(int page) async {
+    final response = await _mainApi.fetchCharacters(page);
+    var data = jsonDecode(response.body);
+  
+    return CharacterModel.fromJson(data);
+  }
   // Future<List<Stat>> getStats(int page, int size) async {
   //   final response = await _mainApi.getStats(page, size);
   //   Iterable list = jsonDecode(response.body);

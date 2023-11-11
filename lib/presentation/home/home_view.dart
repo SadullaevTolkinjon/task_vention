@@ -1,7 +1,8 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:task_ventio/constants/navigator/navigator_const.dart';
 import 'package:task_ventio/domain/model/character/character_model.dart';
+import 'package:task_ventio/presentation/home/components/character_container.dart';
 import 'package:task_ventio/presentation/home/cubit/home_cubit.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
@@ -49,11 +50,15 @@ class _HomeViewState extends State<HomeView> {
                 pagingController: _pagingController,
                 builderDelegate: PagedChildBuilderDelegate<Character>(
                   itemBuilder: (_, character, __) {
-                    return SizedBox(
-                      height: 200,
-                      width: double.infinity,
-                      child: CachedNetworkImage(
-                          imageUrl: character.image.toString()),
+                    return CharacterContainer(
+                      character: character,
+                      onTap: () {
+                        Navigator.pushNamed(
+                          context,
+                          NavigatorConst.details,
+                          arguments: character,
+                        );
+                      },
                     );
                   },
                 ),

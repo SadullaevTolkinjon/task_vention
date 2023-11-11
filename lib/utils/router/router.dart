@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:task_ventio/constants/navigator/navigator_const.dart';
+import 'package:task_ventio/domain/model/character/character_model.dart';
+import 'package:task_ventio/presentation/details/details_page.dart';
 import 'package:task_ventio/presentation/home/home_page.dart';
 
 class OngenerateRoutes {
@@ -14,6 +16,10 @@ class OngenerateRoutes {
     switch (settings.name) {
       case NavigatorConst.home:
         return sampleRoute(const HomePage());
+      case NavigatorConst.details:
+        return sampleRoute(DetailsPage(
+          character: args as Character,
+        ));
     }
     return null;
   }

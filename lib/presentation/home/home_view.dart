@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:task_ventio/constants/design/text_formfield_decoration.dart';
 import 'package:task_ventio/constants/navigator/navigator_const.dart';
+import 'package:task_ventio/constants/size/app_sizes.dart';
 import 'package:task_ventio/domain/model/character/character_model.dart';
 import 'package:task_ventio/presentation/home/components/character_container.dart';
 import 'package:task_ventio/presentation/home/cubit/home_cubit.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
-import 'package:task_ventio/presentation/home/home_page.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -42,14 +43,15 @@ class _HomeViewState extends State<HomeView> {
       child: SafeArea(
         child: Column(
           children: [
-            TextField(
-              decoration: const InputDecoration(
-                labelText: "Search...",
+            Padding(
+              padding: EdgeInsets.all(AppSizes.getH(context, 0.014)),
+              child: TextField(
+                decoration:
+                    customTextformfieldDecoration(context, hintText: "Search"),
+                onChanged: (text) {
+                  context.read<HomeCubit>().onSearchChanged(text);
+                },
               ),
-              style: const TextStyle(color: Colors.black),
-              onChanged: (text) {
-                context.read<HomeCubit>().onSearchChanged(text);
-              },
             ),
             Expanded(
               child: PagedListView<int, Character>(

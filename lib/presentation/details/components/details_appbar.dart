@@ -30,8 +30,8 @@ final Character character;
                   Navigator.pop(context);
                 },
                 child: Container(
-                  height: AppSizes.getH(context, 0.04),
-                  width: AppSizes.getH(context, 0.04),
+                  height: AppSizes.getH(context, 0.045),
+                  width: AppSizes.getH(context, 0.045),
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
                     color: ColorConstants.grey,
@@ -39,10 +39,9 @@ final Character character;
                       Radius.circular(12),
                     ),
                   ),
-                  child: Icon(
-                    Icons.arrow_back_ios,
-                    size: AppSizes.getH(context, 0.02),
-                    weight: AppSizes.getH(context, 0.01),
+                  child: const Icon(
+                    Icons.arrow_back,
+                   
                   ),
                 ),
               ),

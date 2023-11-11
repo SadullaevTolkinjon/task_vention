@@ -1,65 +1,69 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:task_ventio/constants/color/color_const.dart';
+import 'package:task_ventio/constants/size/app_sizes.dart';
+import 'package:task_ventio/di/injection.dart';
 import 'package:task_ventio/domain/model/character/character_model.dart';
+import 'package:task_ventio/domain/repository/main_repository.dart';
+import 'package:task_ventio/presentation/details/components/character_details.dart';
+import 'package:task_ventio/presentation/details/components/details_appbar.dart';
+import 'package:task_ventio/presentation/widgets/custom_btn.dart';
+import 'package:task_ventio/presentation/widgets/my_padding.dart';
 
 class DetailsPage extends StatelessWidget {
-  const DetailsPage({super.key, required this.character});
   final Character character;
+  const DetailsPage({
+    super.key,
+    required this.character,
+  });
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Hero(
-              tag: character.id.toString(),
-              child: Container(
-                height: 400,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    fit: BoxFit.cover,
-                    image:
-                        CachedNetworkImageProvider(character.image.toString()),
-                  ),
-                ),
-                child: Stack(
-                  children: [
-                    Positioned(
-                      top: 10,
-                      left: 14,
-                      child: GestureDetector(
-                        onTap: () {
-                          Navigator.pop(context);
-                        },
-                        child: Container(
-                          height: 40,
-                          width: 40,
-                          alignment: Alignment.center,
-                          decoration: BoxDecoration(
-                            color: ColorConstants.grey,
-                            borderRadius: const BorderRadius.all(
-                              Radius.circular(12),
-                            ),
-                          ),
-                          child:  Center(
-                            child: Icon(
-                              Icons.arrow_back_ios,
-                              size: 20,
-                              weight: 10,
-                            ),
-                          ),
-                        ),
-                      ),
-                    )
-                  ],
-                ),
-              ),
+            _buildAppbar(character),
+            _buildPadding(AppSizes.getH(context, 0.014)),
+            CharacterDetails(
+              character: character,
             ),
+            const Spacer(),
+            _buildFloatingBtn(context)
           ],
         ),
       ),
+    );
+  }
+
+  _buildPadding(double size) {
+    return MyPadding(
+      height: size,
+    );
+  }
+
+  _buildFloatingBtn(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.symmetric(
+        horizontal: AppSizes.getH(context, 0.014),
+      ),
+      child: CustomBtn(
+        height: AppSizes.getH(context, 0.05),
+        width: double.infinity,
+        color: ColorConstants.grey,
+        titleColor: ColorConstants.black,
+        ontap: () {
+          locator<MainRepository>().shareLocation(character.location!.url!);
+        },
+        title: "Go to location",
+      ),
+    );
+  }
+
+  _buildAppbar(Character character) {
+    return DetailsAppbar(
+      character: character,
     );
   }
 }

@@ -14,10 +14,7 @@ class MainApi {
   Future<Response> fetchCharacters(int page, String? search) async {
     final Map<String, Object> params = {'page': page};
     if (search != null) params['name'] = search;
-    var data = await _api.get(
-      path: 'character',
-      params: params,
-    );
+    var data = await _api.get(path: 'character', params: params);
     return data;
   }
 }

@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:task_ventio/constants/color/color_const.dart';
+import 'package:task_ventio/constants/design/custom_shadow.dart';
 import 'package:task_ventio/constants/size/app_sizes.dart';
 import 'package:task_ventio/domain/model/character/character_model.dart';
 import 'package:task_ventio/presentation/widgets/my_padding.dart';
@@ -32,23 +33,7 @@ class CharacterContainer extends StatelessWidget {
             padding: EdgeInsets.all(
               AppSizes.getH(context, 0.01),
             ),
-            decoration: BoxDecoration(
-              boxShadow: [
-                BoxShadow(
-                  color:
-                      ColorConstants.grey100.withOpacity(0.5), // Shadow color
-                  spreadRadius: 2,
-                  blurRadius: 5,
-                  offset: const Offset(0, 3), // changes position of shadow
-                ),
-              ],
-              color: ColorConstants.white,
-              borderRadius: BorderRadius.all(
-                Radius.circular(
-                  AppSizes.getH(context, 0.012),
-                ),
-              ),
-            ),
+            decoration: customBoxShadow(context),
             child: Column(
               children: [
                 Expanded(

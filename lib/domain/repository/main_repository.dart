@@ -16,8 +16,8 @@ class MainRepository {
     return list;
   }
 
-  fetchCharacters(int page) async {
-    final response = await _mainApi.fetchCharacters(page);
+  fetchCharacters(int page,String query) async {
+    final response = await _mainApi.fetchCharacters(page,query);
     var data = jsonDecode(response.body);
   
     return CharacterModel.fromJson(data);

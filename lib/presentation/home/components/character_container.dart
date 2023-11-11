@@ -17,8 +17,9 @@ class CharacterContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(
-        top: AppSizes.getH(context, 0.014),
-      ),
+          top: AppSizes.getH(context, 0.014),
+          left: AppSizes.getH(context, 0.014),
+          right: AppSizes.getH(context, 0.014)),
       child: GestureDetector(
         onTap: () {
           onTap();
@@ -32,6 +33,16 @@ class CharacterContainer extends StatelessWidget {
               AppSizes.getH(context, 0.01),
             ),
             decoration: BoxDecoration(
+              boxShadow: [
+                BoxShadow(
+                  color:
+                      ColorConstants.grey100.withOpacity(0.5), // Shadow color
+                  spreadRadius: 2,
+                  blurRadius: 5,
+                  offset: const Offset(0, 3), // changes position of shadow
+                ),
+              ],
+              color: ColorConstants.white,
               borderRadius: BorderRadius.all(
                 Radius.circular(
                   AppSizes.getH(context, 0.012),
@@ -85,29 +96,28 @@ class CharacterStatusTxt extends StatelessWidget {
   final String subtitle;
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Text(
-          "$title: ",
-          style: TextStyle(
-            fontSize: AppSizes.getH(context, 0.018),
-            fontWeight: FontWeight.w600,
-            color: ColorConstants.kPrimiaryText,
-          ),
+    return RichText(
+      maxLines: 1,
+      overflow: TextOverflow.ellipsis,
+      textAlign: TextAlign.left,
+      text: TextSpan(
+        text: "$title: ",
+        style: TextStyle(
+          fontSize: AppSizes.getH(context, 0.018),
+          fontWeight: FontWeight.w600,
+          color: ColorConstants.kPrimiaryText,
         ),
-        Expanded(
-          child: Text(
-            subtitle,
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
+        children: [
+          TextSpan(
+            text: subtitle,
             style: TextStyle(
               fontSize: AppSizes.getH(context, 0.02),
               fontWeight: FontWeight.w600,
               color: ColorConstants.black,
             ),
-          ),
-        )
-      ],
+          )
+        ],
+      ),
     );
   }
 }

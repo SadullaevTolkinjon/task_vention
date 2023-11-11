@@ -5,6 +5,7 @@ import 'package:task_ventio/domain/model/character/character_model.dart';
 import 'package:task_ventio/presentation/home/components/character_container.dart';
 import 'package:task_ventio/presentation/home/cubit/home_cubit.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
+import 'package:task_ventio/presentation/home/home_page.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -41,9 +42,14 @@ class _HomeViewState extends State<HomeView> {
       child: SafeArea(
         child: Column(
           children: [
-            const Text("Home"),
-            const SizedBox(
-              height: 20,
+            TextField(
+              decoration: const InputDecoration(
+                labelText: "Search...",
+              ),
+              style: const TextStyle(color: Colors.black),
+              onChanged: (text) {
+                context.read<HomeCubit>().onSearchChanged(text);
+              },
             ),
             Expanded(
               child: PagedListView<int, Character>(
@@ -72,7 +78,9 @@ class _HomeViewState extends State<HomeView> {
 
   @override
   void dispose() {
+    context.read<HomeCubit>().dispose();
     _pagingController.dispose();
+
     super.dispose();
   }
 }

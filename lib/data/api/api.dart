@@ -7,10 +7,6 @@ import 'package:pretty_http_logger/pretty_http_logger.dart';
 
 @Injectable()
 class Api {
-  // final TokenPreference _token;
-
-  // Api(this._token);
-
   final _host = "rickandmortyapi.com";
   final _root = "api";
 
@@ -64,11 +60,6 @@ class Api {
       "Content-Type": "application/json; charset=UTF-8"
     };
 
-    // final token = await _token.get();
-    // if (token != null) {
-    //   headers["token"] = token;
-    // }
-
     return headers;
   }
 
@@ -76,15 +67,10 @@ class Api {
     if (response.statusCode >= 200 && response.statusCode < 300) {
       return response;
     }
-
     switch (response.statusCode) {
-      // case 404:
-      //   throw UserNotFoundException();
       case 403:
-        //await _token.clear();
         throw InvalidCredentialsExceptions();
-      // case 402:
-      //   throw NameUnavailableException();
+
       default:
         throw Exception();
     }

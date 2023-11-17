@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:task_ventio/constants/navigator/navigator_const.dart';
 import 'package:task_ventio/di/injection.dart';
-import 'package:task_ventio/presentation/home/cubit/home_cubit.dart';
 import 'package:task_ventio/constants/utils/router/router.dart';
 import 'package:task_ventio/constants/utils/theme/main_theme.dart';
 

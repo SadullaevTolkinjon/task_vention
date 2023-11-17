@@ -56,7 +56,9 @@ class _HomeViewState extends State<HomeView> {
             Expanded(
               child: PagedListView<int, Character>(
                 pagingController: _pagingController,
+                
                 builderDelegate: PagedChildBuilderDelegate<Character>(
+                  
                   itemBuilder: (_, character, __) {
                     return CharacterContainer(
                       character: character,

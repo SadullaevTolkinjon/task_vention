@@ -6,10 +6,7 @@ import 'package:task_ventio/data/api/api.dart';
 class MainApi {
   final Api _api;
   MainApi(this._api);
-  Future<Response> getCategory() async {
-    var data = await _api.get(path: 'category/top');
-    return data;
-  }
+
 
   Future<Response> fetchCharacters(int page, String? search) async {
     final Map<String, Object> params = {'page': page};
